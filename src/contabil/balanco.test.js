@@ -1,4 +1,4 @@
-import {createBalanco, totalAtivo, totalPassivo, balancoValido, createSeries} from './balanco'
+import {createBalanco, totalAtivo, totalPassivo, balancoValido, createPeriodo} from './balanco'
 
 test('inicializa balanco vazio', () => {
   const balanco = createBalanco(2017)
@@ -17,7 +17,7 @@ test('inicializa balanco vazio', () => {
 })
 
 test('inicializa serie', () => {
-  const balancos = createSeries([2018, 2017])
+  const balancos = createPeriodo([2018, 2017])
   expect(balancos).toEqual([createBalanco(2018), createBalanco(2017)])
 })
 
