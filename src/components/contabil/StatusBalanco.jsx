@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {balancoValido} from '../../contabil/balanco'
 
 const StatusBalanco = ({periodo}) => (
@@ -12,13 +13,21 @@ const StatusBalanco = ({periodo}) => (
         <table className="table">
           <thead>
             <tr>
-              {periodo.map(balanco => <th>{balanco.ano}</th>)}
+              {periodo.map(balanco => <th key={balanco.ano}>{balanco.ano}</th>)}
             </tr>
           </thead>
           <tbody>
             <tr>
               {periodo.map(balanco => (
-                <td>{balancoValido(balanco) ? "Válido" : "Inválido"}</td>
+                <td key={balanco.ano}>{balancoValido(balanco) ? 
+                  <span className="text-success">
+                    <FontAwesomeIcon icon="check" /> Válido
+                  </span>
+                  : 
+                  <span className="text-danger">
+                    <FontAwesomeIcon icon="times" /> Inválido
+                  </span>
+                }</td>
               ))}
             </tr>
           </tbody>

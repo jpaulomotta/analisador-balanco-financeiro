@@ -1,9 +1,10 @@
 import React from 'react'
-import {totalAtivo, totalPassivo, balancoValido} from '../../contabil/balanco'
+import {totalAtivo, totalPassivo, balancoValido, formatMoney} from '../../contabil/balanco'
 
 const cellColor = (balanco) => !balancoValido(balanco) ? 'text-danger' : ''
 
 const Input = ({balanco, tipo, conta, onChangeBalanco}) => (
+  
   <input type="number" 
     className="form-control form-control-sm" 
     value={balanco[tipo][conta]}
@@ -21,7 +22,9 @@ const Periodo = (props) => {
               <tr>
                 <th>Ativo</th>
                 {periodo.map(balanco => ( 
-                  <th className={cellColor(balanco)}>{balanco.ano}</th> 
+                  <th key={balanco.ano} className={cellColor(balanco)}>
+                    {balanco.ano}
+                  </th> 
                 ))}
               </tr>
             </thead>
@@ -29,7 +32,7 @@ const Periodo = (props) => {
               <tr>
                 <td>Circulante</td>
                 {periodo.map(balanco => ( 
-                  <td className={cellColor(balanco)}>
+                  <td key={balanco.ano} className={cellColor(balanco)}>
                     <Input balanco={balanco} tipo="ativo" conta="circulante" onChangeBalanco={onChangeBalanco} />
                   </td> 
                 ))}
@@ -37,7 +40,7 @@ const Periodo = (props) => {
               <tr>
                 <td>Não Circulante</td>
                 {periodo.map(balanco => ( 
-                  <td className={cellColor(balanco)}>
+                  <td key={balanco.ano} className={cellColor(balanco)}>
                     <Input balanco={balanco} tipo="ativo" conta="naoCirculante" onChangeBalanco={onChangeBalanco} />
                   </td> 
                 ))}
@@ -50,7 +53,9 @@ const Periodo = (props) => {
               <tr>
                 <th>Total do Ativo</th>
                 {periodo.map(balanco => ( 
-                  <td className={cellColor(balanco)}><b>{totalAtivo(balanco)}</b></td> 
+                  <td key={balanco.ano} className={cellColor(balanco)}>
+                    <b>R$ {formatMoney(totalAtivo(balanco))}</b>
+                  </td> 
                 ))}
               </tr>
             </tfoot>
@@ -65,7 +70,7 @@ const Periodo = (props) => {
               <tr>
                 <th>Passivo</th>
                 {periodo.map(balanco => ( 
-                  <th className={cellColor(balanco)}>{balanco.ano}</th> 
+                  <th key={balanco.ano} className={cellColor(balanco)}>{balanco.ano}</th> 
                 ))}
               </tr>
             </thead>
@@ -74,7 +79,7 @@ const Periodo = (props) => {
               <tr>
                 <td>Circulante</td>
                 {periodo.map(balanco => ( 
-                  <td className={cellColor(balanco)}>
+                  <td key={balanco.ano} className={cellColor(balanco)}>
                     <Input balanco={balanco} tipo="passivo" conta="circulante" onChangeBalanco={onChangeBalanco} />
                   </td> 
                 ))}
@@ -82,7 +87,7 @@ const Periodo = (props) => {
               <tr>
                 <td>Não Circulante</td>
                 {periodo.map(balanco => ( 
-                  <td className={cellColor(balanco)}>
+                  <td key={balanco.ano} className={cellColor(balanco)}>
                     <Input balanco={balanco} tipo="passivo" conta="naoCirculante" onChangeBalanco={onChangeBalanco} />
                   </td> 
                 ))}
@@ -90,7 +95,7 @@ const Periodo = (props) => {
               <tr>
                 <td>Patrimonio Liquido</td>
                 {periodo.map(balanco => ( 
-                  <td className={cellColor(balanco)}>
+                  <td key={balanco.ano} className={cellColor(balanco)}>
                     <Input balanco={balanco} tipo="passivo" conta="patrimonioLiquido" onChangeBalanco={onChangeBalanco} />
                   </td> 
                 ))}
@@ -100,7 +105,7 @@ const Periodo = (props) => {
               <tr>
                 <th>Total do Passivo</th>
                 {periodo.map(balanco => ( 
-                  <th className={cellColor(balanco)}>{totalPassivo(balanco)}</th> 
+                  <th key={balanco.ano} className={cellColor(balanco)}>$ {formatMoney(totalPassivo(balanco))}</th> 
                 ))}
               </tr>
             </tfoot>

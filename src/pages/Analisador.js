@@ -10,9 +10,9 @@ const enhance = compose(
     onChangeBalanco: ({updatePeriodo}) => (ano, tipo, conta, valor) => {
       updatePeriodo(periodo => {
         const balanco = periodo.find(balanco => balanco.ano === ano)
-        const valorConvertido = parseFloat(valor)
-        balanco[tipo][conta] = parseFloat(valorConvertido)
-        console.log("MUDEI ESTADO")
+        let valorConvertido = parseFloat(valor)
+        if(isNaN(valorConvertido)) { valorConvertido = 0 }
+        balanco[tipo][conta] = valorConvertido
         return periodo
       })
     }

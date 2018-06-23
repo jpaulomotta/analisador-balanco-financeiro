@@ -1,4 +1,4 @@
-import {createBalanco, totalAtivo, totalPassivo, balancoValido, createPeriodo} from './balanco'
+import {createBalanco, totalAtivo, totalPassivo, balancoValido, createPeriodo, formatMoney} from './balanco'
 
 test('inicializa balanco vazio', () => {
   const balanco = createBalanco(2017)
@@ -60,6 +60,10 @@ test('valido', () => {
 
 test('balanco inicial é valido', () => {
   expect(balancoValido(createBalanco())).toBe(true)
+})
+
+test('format money', () => {
+  expect(formatMoney(2000)).toBe('2,000.00')
 })
 
 test('analise horizontal')
