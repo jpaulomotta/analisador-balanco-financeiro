@@ -4,7 +4,7 @@ import {analiseHorizontal} from '../horizontal'
 test('analise horizontal', () => {
   const balanco = createBalancoDemo()
   const analise = analiseHorizontal(balanco)
-  console.log(analise)
+  
   expect(analise.ativo.circulante.toFixed(2)).toBe('0.09')
   expect(analise.ativo.naoCirculante.toFixed(2)).toBe('0.06')
   expect(analise.passivo.circulante.toFixed(2)).toBe('0.13')
