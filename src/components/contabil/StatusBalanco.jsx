@@ -1,10 +1,10 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {balancoValido} from '../../contabil/balanco'
+import {periodoValido} from '../../contabil/balanco'
 
-const StatusBalanco = ({periodo}) => (
+const StatusBalanco = ({balanco}) => (
   <div>
-    {periodo.find(balanco => !balancoValido(balanco)) && 
+    {balanco.find(periodo => !periodoValido(periodo)) && 
       <div className="card border-danger">
         <div className="card-body">
           <h4 className="card-title">Balanço Inválido</h4>
@@ -13,13 +13,13 @@ const StatusBalanco = ({periodo}) => (
         <table className="table">
           <thead>
             <tr>
-              {periodo.map(balanco => <th key={balanco.ano}>{balanco.ano}</th>)}
+              {balanco.map(periodo => <th key={periodo.ano}>{periodo.ano}</th>)}
             </tr>
           </thead>
           <tbody>
             <tr>
-              {periodo.map(balanco => (
-                <td key={balanco.ano}>{balancoValido(balanco) ? 
+              {balanco.map(periodo => (
+                <td key={periodo.ano}>{periodoValido(periodo) ? 
                   <span className="text-success">
                     <FontAwesomeIcon icon="check" /> Válido
                   </span>
