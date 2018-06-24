@@ -16,3 +16,20 @@ export const analiseVertical = (periodo) => {
 
   return analise
 }
+
+export const analiseVerticalBalanco = (balanco) => (
+  balanco.map(periodo => analiseVertical(periodo))
+)
+
+export const dadosGraficoVertical = (analises) => {
+  const row = (nome, tipo, conta) => (
+    {nome, atual: analises[0][tipo][conta]*100, anterior: analises[1][tipo][conta]*100}
+  )
+  return [
+    row('Ativo Circulante', 'ativo', 'circulante'),
+    row('Ativo Não Circulante', 'ativo', 'naoCirculante'),
+    row('Passivo Circulante', 'passivo', 'circulante'),
+    row('Passivo Não Circulante', 'passivo', 'naoCirculante'),
+    row('Patrimonio Liquido', 'passivo', 'patrimonioLiquido'),
+  ]
+}

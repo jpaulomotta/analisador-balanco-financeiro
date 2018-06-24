@@ -1,8 +1,9 @@
 import React from 'react'
-import {compose, withState, withHandlers} from 'recompose'
+import {compose, withState, withHandlers, withProps} from 'recompose'
 import {createBalancoDemo} from '../contabil/balanco'
 import Layout from './Layout'
 import Analisador from '../components/contabil/Analisador'
+import {analiseVerticalBalanco, dadosGraficoVertical} from '../contabil/vertical'
 
 const enhance = compose(
   withState('balanco', 'updatePeriodo', createBalancoDemo()),
@@ -16,7 +17,11 @@ const enhance = compose(
         return balanco
       })
     }
-  })
+  }),
+  withProps(({balanco}) => ({
+    analiseVertical: analiseVerticalBalanco(balanco),
+    graficoVertical: dadosGraficoVertical(analiseVerticalBalanco(balanco))
+  }))
 )
 const AnalisadorPage = (props) => (
   <Layout>

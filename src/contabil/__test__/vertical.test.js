@@ -1,5 +1,5 @@
 import { createBalancoDemo } from '../balanco'
-import { analiseVertical } from '../vertical'
+import { analiseVertical, analiseVerticalBalanco, dadosGraficoVertical } from '../vertical'
 
 test('analise vertical', () => {
   const periodo = createBalancoDemo()[0]
@@ -11,5 +11,23 @@ test('analise vertical', () => {
   expect(analise.passivo.circulante.toFixed(4)).toBe('0.2844')
   expect(analise.passivo.naoCirculante.toFixed(4)).toBe('0.2259')
   expect(analise.passivo.patrimonioLiquido.toFixed(4)).toBe('0.4897')
+})
+
+test('analise vertical do balanco', () => {
+  const balanco = createBalancoDemo()
+  const analises = analiseVerticalBalanco(balanco)
+  expect(analises.length).toBe(2)
+})
+
+test('grafico', () => {
+  const analises = analiseVerticalBalanco(createBalancoDemo())
+  const grafico = dadosGraficoVertical(analises)
+  expect(grafico[0].nome).toBe('Ativo Circulante')
+  expect(grafico[4].nome).toBe('Patrimonio Liquido')
+  expect(grafico).toContainEqual({ 
+    nome: 'Ativo Não Circulante',
+    atual: 75.70753822942965,
+    anterior: 76.26137170140009 
+  })
 })
 
