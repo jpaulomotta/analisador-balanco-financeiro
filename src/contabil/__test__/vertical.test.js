@@ -1,8 +1,8 @@
-import { createBalancoDemo } from '../balanco'
+import { createBalancoTeste } from '../balanco'
 import { analiseVertical, analiseVerticalBalanco, dadosGraficoVertical } from '../vertical'
 
 test('analise vertical', () => {
-  const periodo = createBalancoDemo()[0]
+  const periodo = createBalancoTeste()[0]
   const analise = analiseVertical(periodo)
 
   expect(analise.ano).toBe(periodo.ano)
@@ -14,13 +14,13 @@ test('analise vertical', () => {
 })
 
 test('analise vertical do balanco', () => {
-  const balanco = createBalancoDemo()
+  const balanco = createBalancoTeste()
   const analises = analiseVerticalBalanco(balanco)
   expect(analises.length).toBe(2)
 })
 
 test('grafico', () => {
-  const analises = analiseVerticalBalanco(createBalancoDemo())
+  const analises = analiseVerticalBalanco(createBalancoTeste())
   const grafico = dadosGraficoVertical(analises)
   expect(grafico[0].nome).toBe('Ativo Circulante')
   expect(grafico[4].nome).toBe('Patrimonio Liquido')

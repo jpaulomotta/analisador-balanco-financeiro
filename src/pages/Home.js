@@ -14,12 +14,11 @@ const Index = () => (
     <section>
       <h2>Desenvolvido por:</h2>
       <ul>
-        <li>Ana Raquel</li>
-        <li>Gabriel</li>
-        <li>Gabriel</li>
-        <li>João Paulo Motta O. Silva</li>
+        <li>Ana Raquel Calhau - 24976</li>
+        <li>Gabriel Roriz - 34363</li>
+        <li>Gabriel Rocha - 31325</li>
+        <li>João Paulo Motta O. Silva - 24482</li>
       </ul>
-      2018 - Professora Beth
     </section>
   </Layout>
 )

@@ -5,7 +5,7 @@ import {periodoValido} from '../../contabil/balanco'
 const StatusBalanco = ({balanco}) => (
   <div>
     {balanco.find(periodo => !periodoValido(periodo)) && 
-      <div className="card border-danger">
+      <div className="card border-danger shadow">
         <div className="card-body">
           <h4 className="card-title">Balanço Inválido</h4>
           <p className="card-text">O total do ativo deve ser igual ao total do passivo</p>

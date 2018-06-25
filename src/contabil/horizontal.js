@@ -2,7 +2,7 @@ import {createPeriodo} from './balanco'
 
 
 const calcular = (balanco, tipo, conta) => ( 
-  (balanco[0][tipo][conta] - balanco[1][tipo][conta]) / balanco[1][tipo][conta] )
+  (balanco[0][tipo][conta] - balanco[1][tipo][conta]) / balanco[1][tipo][conta] )*100
 
 export const analiseHorizontal = (balanco) => {
   let analise = createPeriodo()

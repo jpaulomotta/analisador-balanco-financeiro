@@ -1,13 +1,13 @@
-import {createBalancoDemo} from '../balanco'
+import {createBalancoTeste} from '../balanco'
 import {analiseHorizontal} from '../horizontal'
 
 test('analise horizontal', () => {
-  const balanco = createBalancoDemo()
+  const balanco = createBalancoTeste()
   const analise = analiseHorizontal(balanco)
   
-  expect(analise.ativo.circulante.toFixed(2)).toBe('0.09')
-  expect(analise.ativo.naoCirculante.toFixed(2)).toBe('0.06')
-  expect(analise.passivo.circulante.toFixed(2)).toBe('0.13')
-  expect(analise.passivo.naoCirculante.toFixed(2)).toBe('0.05')
-  expect(analise.passivo.patrimonioLiquido.toFixed(2)).toBe('0.04')
+  expect(analise.ativo.circulante.toFixed(1)).toBe('8.9')
+  expect(analise.ativo.naoCirculante.toFixed(1)).toBe('5.6')
+  expect(analise.passivo.circulante.toFixed(1)).toBe('12.6')
+  expect(analise.passivo.naoCirculante.toFixed(1)).toBe('5.2')
+  expect(analise.passivo.patrimonioLiquido.toFixed(1)).toBe('3.6')
 })

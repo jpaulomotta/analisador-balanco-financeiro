@@ -11,7 +11,7 @@ const Tabela = ({analiseVertical}) => {
     </tr>
   )
   return (
-    <div className="card">
+    <div className="card shadow">
       <table className="table">
         <thead>
           <tr>
@@ -41,7 +41,7 @@ const Tabela = ({analiseVertical}) => {
 }
 
 const Grafico = ({graficoVertical}) => (
-  <div className="card">
+  <div className="card shadow">
     <div className="card-body">
       <ResponsiveContainer height={300}>
         <BarChart data={graficoVertical} >
@@ -59,7 +59,7 @@ const Grafico = ({graficoVertical}) => (
 )
 
 const AnaliseVertical = ({analiseVertical, graficoVertical}) => [
-  <h2 key="0">Análise Vertical</h2>,
+  <h3 key="0">Análise Vertical</h3>,
   <div key="1" className="row">
     <div className="col-sm-6">
       <Tabela analiseVertical={analiseVertical} />

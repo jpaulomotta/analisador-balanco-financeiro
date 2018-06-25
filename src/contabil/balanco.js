@@ -18,9 +18,9 @@ export const createBalanco = (anos=[]) => anos.map(ano => createPeriodo(ano))
 export const totalAtivo = ({ativo}) => (ativo.circulante + ativo.naoCirculante)
 export const totalPassivo = ({passivo}) => (passivo.circulante + passivo.naoCirculante + passivo.patrimonioLiquido)
 
-export const periodoValido = (b) => (totalAtivo(b) === totalPassivo(b))
+export const periodoValido = (b) => (formatMoney(totalAtivo(b)) === formatMoney(totalPassivo(b)))
 
-export const createBalancoDemo = () => ([
+export const createBalancoTeste = () => ([
   {
     ano: 2018,
     ativo: {
